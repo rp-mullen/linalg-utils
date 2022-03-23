@@ -19,14 +19,32 @@ public class Main {
         System.out.println("|  4 x 3  Matrix  |");
         Matrix C = Matrix.multiply(A,B);
         C.print();
+        
+        System.out.println("");
+        System.out.println("|  TRANSPOSE TEST  |");
+                
+        Matrix X = Matrix.random(3,5);
+        X.print();
+        
+        System.out.println("");
+        
+        
+        Matrix X_T = X.transpose();
+        X_T.print();
+        
+        System.out.println("");
+        System.out.println("|  VECTOR TEST  |");
+        Vector v = new Vector(3);
+        
+        
     }
     
 }
 
 class Matrix {
-    private final int N;
-    private final int M;
-    private double data[][];
+    public int N;
+    public int M;
+    public double data[][];
     
     // constructor
     public Matrix(int N, int M) {
@@ -94,6 +112,24 @@ class Matrix {
     }
 }
 
+class Vector extends Matrix {
+    public Vector(int dim) {
+        this.N = dim;
+        this.M = 1;
+        this.data = new double[dim][1];
+    }
+
+    public static Vector random(int dim) {
+        Vector V = new Vector(dim);
+        for (int i = 0; i < dim; i++) {
+            V.data[i][0] = Math.random();
+        }
+    }
+    
+    public void print() {
+        
+    }
+}
 
 // printer class
 class matrixPrinter {
